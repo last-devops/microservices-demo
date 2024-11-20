@@ -24,7 +24,7 @@ output "this_container_cluster_name" {
 
 output "this_redis_instance_host" {
   description = "Private IP Address of the Redis Instance"
-  value       = google_redis_instance.this.host
+  value       = try(google_redis_instance.this[0].host, null)
 }
 
 output "enabled_apis" {
