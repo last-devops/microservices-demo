@@ -31,7 +31,7 @@ resource "google_redis_instance" "redis-cart" {
 }
 
 # Edit contents of Memorystore kustomization.yaml file to target new Memorystore (redis) instance
-resource "null_resource" "kustomization-update" {
+resource "null_resource" "kustomization_update" {
   # count specifies the number of instances to create;
   # if var.memorystore is true then the resource is enabled
   count          = var.memorystore ? 1 : 0

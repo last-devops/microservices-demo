@@ -13,8 +13,8 @@
 # limitations under the License.
 
 variable "environment" {
-  type        = string
   description = "Environment name prefix for resources & a label"
+  type        = string
 }
 
 variable "gcp_project_id" {
