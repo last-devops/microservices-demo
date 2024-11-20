@@ -12,6 +12,16 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+variable "env" {
+  description = "Environment name that will be used as a prefix to all cloud resources"
+  type = string
+
+  validation {
+    condition = var.env == lower(var.env)
+    error_message = "The enviromnet must be lower case"
+  }
+}
+
 variable "gcp_project_id" {
   type        = string
   description = "The GCP project ID to apply this config to"

@@ -14,7 +14,7 @@
 
 # Create the Memorystore (redis) instance
 resource "google_redis_instance" "redis-cart" {
-  name           = "redis-cart"
+  name           = "${var.env}-redis-cart"
   memory_size_gb = 1
   region         = var.region
 
