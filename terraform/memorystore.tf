@@ -45,3 +45,4 @@ resource "null_resource" "kustomization-update" {
     resource.google_redis_instance.redis-cart
   ]
 }
+
