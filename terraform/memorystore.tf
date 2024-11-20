@@ -13,7 +13,7 @@
 # limitations under the License.
 
 # Create the Memorystore (redis) instance
-resource "google_redis_instance" "redis-cart" {
+resource "google_redis_instance" "this" {
   # count specifies the number of instances to create;
   # if var.memorystore is true then the resource is enabled
   count          = var.memorystore ? 1 : 0
@@ -38,10 +38,14 @@ resource "null_resource" "kustomization_update" {
   
   provisioner "local-exec" {
     interpreter = ["bash", "-exc"]
-    command     = "sed -i \"s/REDIS_CONNECTION_STRING/${google_redis_instance.redis-cart[0].host}:${google_redis_instance.redis-cart[0].port}/g\" ../kustomize/components/memorystore/kustomization.yaml"
+    command     = "sed -i \"s/REDIS_CONNECTION_STRING/${google_redis_instance.this[0].host}:${google_redis_instance.this[0].port}/g\" ../kustomize/components/memorystore/kustomization.yaml"
   }
 
   depends_on = [
-    resource.google_redis_instance.redis-cart
+    resource.google_redis_instance.this
   ]
+
+  lifecycle {
+    prevent_destroy = true
+  }
 }

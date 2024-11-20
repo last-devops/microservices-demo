@@ -12,12 +12,22 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-output "my_cluster_container_cluster_location" {
+output "this_container_cluster_location" {
   description = "Location of the cluster"
-  value       = google_container_cluster.my_cluster.location
+  value       = google_container_cluster.this.location
 }
 
-output "my_cluster_container_cluster_name" {
+output "this_container_cluster_name" {
   description = "Name of the cluster"
-  value       = google_container_cluster.my_cluster.name
+  value       = google_container_cluster.this.name
+}
+
+output "this_redis_instance_host" {
+  description = "Private IP Address of the Redis Instance"
+  value       = google_redis_instance.this.host
+}
+
+output "enabled_apis" {
+  description = "List of APIs enabled by this projects"
+  value       = local.enabled_apis
 }
