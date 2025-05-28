@@ -54,4 +54,5 @@ variable "filepath_manifest" {
 variable "memorystore" {
   description = "If true, Online Boutique's in-cluster Redis cache will be replaced with a Google Cloud Memorystore Redis cache"
   type        = bool
+  default = false
 }
